@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Comprehensive scouting reports, performance analyses, and tactical development trackers for B.E.S.T. Academy players.">
+  <title>Scouting — B.E.S.T. Academy</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+
+  <style>
+    :root { color-scheme: dark; }
+    body { font-family: 'Inter', sans-serif; background: #0b0b0c; color: #e6e6e6; }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #09090b; }
+    ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 4px; }
+    .card { background: #111113; border: 1px solid #1f1f21; border-radius: 1rem; }
+    .line-clamp-2 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(5px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+
+    .animate-enter {
+      opacity: 0;
+      animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+
+    .delay-100 { animation-delay: 100ms; }
+    .delay-200 { animation-delay: 200ms; }
+    .delay-300 { animation-delay: 300ms; }
+    .delay-350 { animation-delay: 350ms; }
+    .delay-400 { animation-delay: 400ms; }
+    .delay-450 { animation-delay: 450ms; }
+    .delay-500 { animation-delay: 500ms; }
+    .delay-600 { animation-delay: 600ms; }
+    .delay-700 { animation-delay: 700ms; }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-300 antialiased">
+  
+  <!-- Sticky Navigation: fixed top-0 so this nav remains visible while scrolling -->
+  <!-- NOTE: This is intentionally fixed to keep navigation 'in play' as you scroll the page. -->
+   
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 backdrop-blur-sm animate-enter delay-100 bg-zinc-950/80">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-12">
+        <!-- Logo -->
+        <a href="Index.html" class="flex items-center gap-3 group">
+          <div class="w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center text-white shadow-lg shadow-orange-500/20 group-hover:shadow-orange-500/40 group-hover:scale-110 transition-all duration-300">
+            <i data-lucide="trophy" class="w-4 h-4" style="stroke-width: 1.5;"></i>
+          </div>
+          <span class="text-lg font-medium tracking-tight text-white group-hover:text-white transition-colors">B.E.S.T. <span class="text-zinc-500 font-light group-hover:text-zinc-400 transition-colors">Academy</span></span>
+        </a>
+        
+        <!-- Nav Links -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="Index.html" class="text-sm font-normal text-zinc-400 hover:text-white transition-colors relative group/link">
+            Home
+            <span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white transition-all duration-300 group-hover/link:w-full"></span>
+          </a>
+          <a href="programs.html" class="text-sm font-normal text-zinc-400 hover:text-white transition-colors relative group/link">
+            Programs
+            <span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white transition-all duration-300 group-hover/link:w-full"></span>
+          </a>
+          <a href="players.html" class="text-sm font-normal text-zinc-400 hover:text-white transition-colors relative group/link">
+            Players
+            <span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white transition-all duration-300 group-hover/link:w-full"></span>
+          </a>
+          <a href="scouting.html" class="text-sm font-normal text-white border-b border-white pb-0.5">
+            Scouting
+          </a>
+          <a href="blog.html" class="text-sm font-normal text-zinc-400 hover:text-white transition-colors relative group/link">
+            Blog
+            <span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white transition-all duration-300 group-hover/link:w-full"></span>
+          </a>
+          <a href="about.html" class="text-sm font-normal text-zinc-400 hover:text-white transition-colors relative group/link">
+            About
+            <span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white transition-all duration-300 group-hover/link:w-full"></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <span class="text-zinc-700 text-xs hidden md:block">|</span>
+        <div class="hidden md:block text-xs text-zinc-500 font-mono">EST. 2025</div>
+        
+        <button id="mobileMenuBtn" class="md:hidden text-zinc-400 hover:text-white transition-colors p-2" aria-label="Toggle mobile menu">
+          <i data-lucide="menu" id="menuIcon" class="w-6 h-6" style="stroke-width: 1.5;"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-0 z-50 bg-zinc-950/95 backdrop-blur-lg md:hidden transform translate-x-full transition-transform duration-300 ease-in-out">
+    <div class="flex flex-col h-full">
+      <div class="flex items-center justify-between p-6 border-b border-white/5">
+        <a href="Index.html" class="flex items-center gap-3 group">
+          <div class="w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center text-white shadow-lg shadow-orange-500/20 group-hover:shadow-orange-500/40 group-hover:scale-110 transition-all duration-300">
+            <i data-lucide="trophy" class="w-4 h-4" style="stroke-width: 1.5;"></i>
+          </div>
+          <span class="text-lg font-medium tracking-tight text-white group-hover:text-white transition-colors">B.E.S.T. <span class="text-zinc-500 font-light group-hover:text-zinc-400 transition-colors">Academy</span></span>
+        </a>
+        <button id="mobileMenuClose" class="text-zinc-400 hover:text-white transition-colors p-2" aria-label="Close mobile menu">
+          <i data-lucide="x" class="w-6 h-6" style="stroke-width: 1.5;"></i>
+        </button>
+      </div>
+      <nav class="flex-1 overflow-y-auto px-6 py-8">
+        <div class="flex flex-col gap-1">
+          <a href="Index.html" class="text-base font-medium text-zinc-400 hover:text-white hover:border-l-2 hover:border-orange-500/50 pl-4 py-3 transition-colors">Home</a>
+          <a href="programs.html" class="text-base font-medium text-zinc-400 hover:text-white hover:border-l-2 hover:border-orange-500/50 pl-4 py-3 transition-colors">Programs</a>
+          <a href="players.html" class="text-base font-medium text-zinc-400 hover:text-white hover:border-l-2 hover:border-orange-500/50 pl-4 py-3 transition-colors">Players</a>
+          <a href="scouting.html" class="text-base font-medium text-white border-l-2 border-orange-500 pl-4 py-3">Scouting</a>
+          <a href="blog.html" class="text-base font-medium text-zinc-400 hover:text-white hover:border-l-2 hover:border-orange-500/50 pl-4 py-3 transition-colors">Blog</a>
+          <a href="about.html" class="text-base font-medium text-zinc-400 hover:text-white hover:border-l-2 hover:border-orange-500/50 pl-4 py-3 transition-colors">About</a>
+        </div>
+        <div class="mt-8 pt-8 border-t border-white/5">
+          <div class="text-xs text-zinc-500 font-mono">EST. 2025</div>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Page container -->
+  <main class="px-6 lg:px-10 pt-28 pb-10 space-y-6 max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+      <div>
+        <h1 class="text-3xl lg:text-4xl font-extrabold text-white tracking-tight animate-enter delay-200">Scouting Reports</h1>
+        <p class="text-sm text-zinc-500 mt-2 max-w-2xl animate-enter delay-300">
+          Comprehensive performance analyses, recruiter summaries, and tactical development trackers — all in one place. Use filters to find prospects, export reports, or share directly with scouts.
+        </p>
+      </div>
+      <div class="flex gap-3 items-center animate-enter delay-400">
+        <button id="exportCsvBtn" class="rounded-xl px-4 py-2 bg-orange-600 hover:bg-orange-500 text-white font-medium transition-colors">Export CSV</button>
+        <button id="shareScoutsBtn" class="rounded-xl px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 font-medium transition-colors">Share with Scouts</button>
+      </div>
+    </div>
+
+    <!-- Controls card -->
+    <div class="card p-4 animate-enter delay-300 relative z-40">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-3 items-center">
+        <div class="md:col-span-2">
+          <label class="sr-only">Search</label>
+          <div class="relative">
+            <input id="searchInput" type="text" placeholder="Search by player or club..." class="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 text-sm">
+            <span class="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-500">
+              <i data-lucide="search" class="w-4 h-4" style="stroke-width: 1.5;"></i>
+            </span>
+          </div>
+        </div>
+
+        <!-- Position Dropdown -->
+        <div class="animate-enter delay-400 relative z-30">
+          <button class="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-700 rounded-lg text-white text-left flex items-center justify-between text-sm hover:border-zinc-600 transition-colors" id="positionBtn">
+            <span id="positionLabel">All Positions</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-zinc-500" style="stroke-width: 1.5;"></i>
+          </button>
+          <div id="positionMenu" class="hidden absolute left-0 right-0 w-full mt-1 bg-zinc-900 border border-zinc-700 rounded-lg shadow-xl overflow-hidden z-50">
+            <button class="w-full px-4 py-2.5 text-left text-sm text-white hover:bg-zinc-800 transition-colors" data-value="All">All Positions</button>
+            <button class="w-full px-4 py-2.5 text-left text-sm text-white hover:bg-zinc-800 transition-colors" data-value="Goalie">Goalie</button>
+            <button class="w-full px-4 py-2.5 text-left text-sm text-white hover:bg-zinc-800 transition-colors" data-value="Defender">Defender</button>
+            <button class="w-full px-4 py-2.5 text-left text-sm text-white hover:bg-zinc-800 transition-colors" data-value="Forward">Forward</button>
+            <button class="w-full px-4 py-2.5 text-left text-sm text-white hover:bg-zinc-800 transition-colors" data-value="Midfielder">Midfielder</button>
+          </div>
+        </div>
+
+        <!-- Level Dropdown -->
+        <div class="animate-enter delay-450 relative z-20">
+          <button class="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-700 rounded-lg text-white text-left flex items-center justify-between text-sm hover:border-zinc-600 transition-colors" id="levelBtn">
+            <span id="levelLabel">All Levels</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-zinc-500" style="stroke-width: 1.5;"></i>
+          </button>
+          <div id="levelMenu" class="hidden absolute left-0 right-0 w-full mt-1 bg-zinc-900 border border-zinc-700 rounded-lg shadow-xl overflow-hidden z-50">
+            <button class="w-full px-4 py-2.5 text-left text-sm text-white hover:bg-zinc-800 transition-colors" data-value="All">All Levels</button>
+            <button class="w-full px-4 py-2.5 text-left text-sm text-white hover:bg-zinc-800 transition-colors" data-value="Youth">Youth</button>
+            <button class="w-full px-4 py-2.5 text-left text-sm text-white hover:bg-zinc-800 transition-colors" data-value="Collegiate">Collegiate</button>
+            <button class="w-full px-4 py-2.5 text-left text-sm text-white hover:bg-zinc-800 transition-colors" data-value="Semi-Pro">Semi-Pro</button>
+            <button class="w-full px-4 py-2.5 text-left text-sm text-white hover:bg-zinc-800 transition-colors" data-value="Pro">Pro</button>
+          </div>
+        </div>
+
+        <!-- Sort Dropdown -->
+        <div class="animate-enter delay-500 relative z-10">
+          <button class="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-700 rounded-lg text-white text-left flex items-center justify-between text-sm hover:border-zinc-600 transition-colors" id="sortBtn">
+            <span id="sortLabel">Most Exposure</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-zinc-500" style="stroke-width: 1.5;"></i>
+          </button>
+          <div id="sortMenu" class="hidden absolute left-0 right-0 w-full mt-1 bg-zinc-900 border border-zinc-700 rounded-lg shadow-xl overflow-hidden z-50">
+            <button class="w-full px-4 py-2.5 text-left text-sm text-white hover:bg-zinc-800 transition-colors" data-value="recent">Most Exposure</button>
+            <button class="w-full px-4 py-2.5 text-left text-sm text-white hover:bg-zinc-800 transition-colors" data-value="age-asc">Age (Ascending)</button>
+            <button class="w-full px-4 py-2.5 text-left text-sm text-white hover:bg-zinc-800 transition-colors" data-value="age-desc">Age (Descending)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 relative z-0">
+      <!-- Left: list -->
+      <div class="lg:col-span-2 space-y-4" id="listColumn"></div>
+
+      <!-- Right: detail / quick stats -->
+      <aside class="space-y-4">
+        <div class="card p-5 animate-enter delay-600">
+          <h3 class="font-semibold text-white flex items-center gap-2">
+            <i data-lucide="bar-chart-3" class="w-4 h-4 text-orange-500" style="stroke-width: 1.5;"></i>
+            Overview
+          </h3>
+          <div class="text-sm text-zinc-400 mt-4 space-y-3">
+            <div class="flex justify-between items-center">
+              <span>Players in database</span>
+              <span id="playersCount" class="font-medium text-white">0</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span>Currently shown</span>
+              <span id="shownCount" class="font-medium text-white">0</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span>Top exposure</span>
+              <span id="topExposure" class="font-medium text-white">0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card p-5 animate-enter delay-700">
+          <h3 class="font-semibold text-white flex items-center gap-2">
+            <i data-lucide="trending-up" class="w-4 h-4 text-green-500" style="stroke-width: 1.5;"></i>
+            Development Snapshot
+          </h3>
+          <div class="h-40 mt-4" id="miniChartWrap"></div>
+        </div>
+
+        <div class="rounded-2xl p-5 border border-dashed border-zinc-700 text-center animate-enter delay-700 bg-zinc-900/30">
+          <div class="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center mx-auto mb-3">
+            <i data-lucide="clipboard-plus" class="w-6 h-6 text-orange-500" style="stroke-width: 1.5;"></i>
+          </div>
+          <h4 class="font-semibold text-white">Need more reports?</h4>
+          <p class="text-sm text-zinc-500 mt-2">Request a scout evaluation or upload training footage to generate an automated report.</p>
+          <div class="mt-4 flex gap-2 justify-center">
+            <button id="requestScoutBtn" class="px-4 py-2 rounded-lg bg-orange-600 hover:bg-orange-500 text-white text-sm font-medium transition-colors">Request Scout</button>
+            <button id="uploadFootageBtn" class="px-4 py-2 rounded-lg hover:bg-zinc-800 bg-transparent border border-zinc-700 text-zinc-300 text-sm font-medium transition-colors">Upload Footage</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="text-center text-xs text-zinc-500 mt-8 pt-6 border-t border-zinc-800/50 animate-enter delay-700">
+      Scouting Reports — keep private and GDPR-compliant. Ensure you have consent before sharing player data.
+    </footer>
+  </main>
+
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center p-6 bg-black/80 backdrop-blur-sm">
+    <div class="bg-zinc-900 rounded-2xl shadow-2xl max-w-3xl w-full p-6 border border-zinc-800 max-h-[90vh] overflow-y-auto" role="dialog" aria-modal="true">
+      <div class="flex justify-between items-start gap-4">
+        <div>
+          <h3 id="modalName" class="text-xl font-bold text-white tracking-tight">Name</h3>
+          <p id="modalSubtitle" class="text-sm text-zinc-500 mt-1">Club • Level • Age</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="modalDownload" class="px-3 py-2 rounded-lg border border-zinc-700 hover:border-zinc-600 hover:bg-zinc-800 text-zinc-300 text-sm font-medium transition-colors flex items-center gap-2">
+            <i data-lucide="download" class="w-4 h-4" style="stroke-width: 1.5;"></i>
+            Download
+          </button>
+          <button id="modalClose" class="px-3 py-2 rounded-lg border border-zinc-700 hover:border-zinc-600 hover:bg-zinc-800 text-zinc-300 text-sm font-medium transition-colors">Close</button>
+        </div>
+      </div>
+
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h4 class="font-semibold text-white flex items-center gap-2">
+            <i data-lucide="file-text" class="w-4 h-4 text-orange-500" style="stroke-width: 1.5;"></i>
+            Scout Notes
+          </h4>
+          <p id="modalNotes" class="text-zinc-400 mt-3 text-sm leading-relaxed">Notes go here</p>
+          <div class="mt-5 grid grid-cols-2 gap-3">
+            <div class="p-4 bg-zinc-950 rounded-xl border border-zinc-800">
+              <div class="text-xs text-zinc-500">Technical</div>
+              <div id="modalTechnical" class="font-semibold text-xl text-white mt-1">0</div>
+            </div>
+            <div class="p-4 bg-zinc-950 rounded-xl border border-zinc-800">
+              <div class="text-xs text-zinc-500">Tactical</div>
+              <div id="modalTactical" class="font-semibold text-xl text-white mt-1">0</div>
+            </div>
+            <div class="p-4 bg-zinc-950 rounded-xl border border-zinc-800">
+              <div class="text-xs text-zinc-500">Physical</div>
+              <div id="modalPhysical" class="font-semibold text-xl text-white mt-1">0</div>
+            </div>
+            <div class="p-4 bg-zinc-950 rounded-xl border border-zinc-800">
+              <div class="text-xs text-zinc-500">Mental</div>
+              <div id="modalMental" class="font-semibold text-xl text-white mt-1">0</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-white flex items-center gap-2">
+            <i data-lucide="line-chart" class="w-4 h-4 text-green-500" style="stroke-width: 1.5;"></i>
+            Development
+          </h4>
+          <div class="h-40 mt-3" id="modalChartWrap"></div>
+
+          <div class="mt-5">
+            <h5 class="text-sm text-zinc-400 font-medium">Recruitment Notes</h5>
+            <ul id="modalRecruitList" class="mt-3 text-sm list-disc list-inside text-zinc-400 space-y-1"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const sampleReports = [
+      {
+        id: "SR-001",
+        name: "Luis Martinez",
+        age: 18,
+        position: "Winger",
+        level: "Semi-Pro",
+        club: "AFC Roscoe",
+        technical: 86,
+        tactical: 79,
+        physical: 82,
+        mental: 88,
+        exposure: 3,
+        lastScoutNotes: "Explosive first step, excellent crossing. Needs improvement on 1v1 defending and left-foot consistency.",
+        progress: [
+          { month: "Jan", score: 62 },
+          { month: "Mar", score: 68 },
+          { month: "May", score: 74 },
+          { month: "Jul", score: 81 },
+          { month: "Sep", score: 86 }
+        ]
+      },
+      {
+        id: "SR-002",
+        name: "Marcus Brown",
+        age: 20,
+        position: "Center Back",
+        level: "Collegiate",
+        club: "Marmion",
+        technical: 72,
+        tactical: 85,
+        physical: 88,
+        mental: 80,
+        exposure: 6,
+        lastScoutNotes: "Dominant in aerial duels and reads the game well. Slow recovery speed — recommended sprint conditioning.",
+        progress: [
+          { month: "Jan", score: 59 },
+          { month: "Mar", score: 65 },
+          { month: "May", score: 70 },
+          { month: "Jul", score: 77 },
+          { month: "Sep", score: 82 }
+        ]
+      },
+      {
+        id: "SR-003",
+        name: "Jordan Williams",
+        age: 17,
+        position: "Striker",
+        level: "Youth",
+        club: "Elite FC",
+        technical: 78,
+        tactical: 72,
+        physical: 85,
+        mental: 76,
+        exposure: 4,
+        lastScoutNotes: "Natural finisher with excellent positioning. Needs to work on hold-up play and aerial presence.",
+        progress: [
+          { month: "Jan", score: 55 },
+          { month: "Mar", score: 62 },
+          { month: "May", score: 68 },
+          { month: "Jul", score: 74 },
+          { month: "Sep", score: 78 }
+        ]
+      }
+    ];
+
+    const listColumn = document.getElementById('listColumn');
+    const playersCountEl = document.getElementById('playersCount');
+    const shownCountEl = document.getElementById('shownCount');
+    const topExposureEl = document.getElementById('topExposure');
+    const miniChartWrap = document.getElementById('miniChartWrap');
+
+    const searchInput = document.getElementById('searchInput');
+    const positionBtn = document.getElementById('positionBtn');
+    const positionMenu = document.getElementById('positionMenu');
+    const positionLabel = document.getElementById('positionLabel');
+
+    const levelBtn = document.getElementById('levelBtn');
+    const levelMenu = document.getElementById('levelMenu');
+    const levelLabel = document.getElementById('levelLabel');
+
+    const sortBtn = document.getElementById('sortBtn');
+    const sortMenu = document.getElementById('sortMenu');
+    const sortLabel = document.getElementById('sortLabel');
+
+    const exportCsvBtn = document.getElementById('exportCsvBtn');
+
+    const modal = document.getElementById('modal');
+    const modalName = document.getElementById('modalName');
+    const modalSubtitle = document.getElementById('modalSubtitle');
+    const modalNotes = document.getElementById('modalNotes');
+    const modalTechnical = document.getElementById('modalTechnical');
+    const modalTactical = document.getElementById('modalTactical');
+    const modalPhysical = document.getElementById('modalPhysical');
+    const modalMental = document.getElementById('modalMental');
+    const modalChartWrap = document.getElementById('modalChartWrap');
+    const modalRecruitList = document.getElementById('modalRecruitList');
+    const modalDownload = document.getElementById('modalDownload');
+    const modalClose = document.getElementById('modalClose');
+
+    let state = { query: '', position: 'All', level: 'All', sort: 'recent', selected: null };
+
+    function closeAllMenus() {
+      positionMenu.classList.add('hidden');
+      levelMenu.classList.add('hidden');
+      sortMenu.classList.add('hidden');
+    }
+
+    function toggleMenu(menu, btn) {
+      const isHidden = menu.classList.contains('hidden');
+      closeAllMenus();
+      if (isHidden) {
+        menu.classList.remove('hidden');
+      }
+    }
+
+    positionBtn.addEventListener('click', (e) => { 
+      e.stopPropagation(); 
+      toggleMenu(positionMenu, positionBtn); 
+    });
+    
+    levelBtn.addEventListener('click', (e) => { 
+      e.stopPropagation(); 
+      toggleMenu(levelMenu, levelBtn); 
+    });
+    
+    sortBtn.addEventListener('click', (e) => { 
+      e.stopPropagation(); 
+      toggleMenu(sortMenu, sortBtn); 
+    });
+
+    positionMenu.querySelectorAll('button').forEach(btn => btn.addEventListener('click', (e) => { 
+      e.stopPropagation();
+      state.position = btn.dataset.value; 
+      positionLabel.textContent = btn.textContent; 
+      closeAllMenus(); 
+      render(); 
+    }));
+    
+    levelMenu.querySelectorAll('button').forEach(btn => btn.addEventListener('click', (e) => { 
+      e.stopPropagation();
+      state.level = btn.dataset.value; 
+      levelLabel.textContent = btn.textContent; 
+      closeAllMenus(); 
+      render(); 
+    }));
+    
+    sortMenu.querySelectorAll('button').forEach(btn => btn.addEventListener('click', (e) => { 
+      e.stopPropagation();
+      state.sort = btn.dataset.value; 
+      sortLabel.textContent = btn.textContent; 
+      closeAllMenus(); 
+      render(); 
+    }));
+
+    document.addEventListener('click', (e) => {
+      closeAllMenus();
+    });
+
+    function createLineSVG(data, color = '#f97316', width = 300, height = 150) {
+      const maxScore = Math.max(...data.map(d => d.score));
+      const minScore = Math.min(...data.map(d => d.score));
+      const range = maxScore - minScore || 1;
+      const padding = 24;
+      const chartWidth = width - padding * 2;
+      const chartHeight = height - padding * 2;
+
+      const points = data.map((d, i) => {
+        const x = padding + (i / (data.length - 1)) * chartWidth;
+        const y = padding + chartHeight - ((d.score - minScore) / range) * chartHeight;
+        return { x, y, ...d };
+      });
+
+      const pathData = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ');
+
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute('width', '100%');
+      svg.setAttribute('height', '100%');
+      svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+      svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+
+      const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+      const grad = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
+      const gradId = `g_${Math.random().toString(36).slice(2,9)}`;
+      grad.setAttribute('id', gradId);
+      grad.setAttribute('x1', '0%'); grad.setAttribute('y1', '0%'); grad.setAttribute('x2', '0%'); grad.setAttribute('y2', '100%');
+      const stop1 = document.createElementNS("http://www.w3.org/2000/svg", "stop"); stop1.setAttribute('offset', '0%'); stop1.setAttribute('stop-color', color); stop1.setAttribute('stop-opacity', '0.3');
+      const stop2 = document.createElementNS("http://www.w3.org/2000/svg", "stop"); stop2.setAttribute('offset', '100%'); stop2.setAttribute('stop-color', color); stop2.setAttribute('stop-opacity', '0');
+      grad.appendChild(stop1); grad.appendChild(stop2); defs.appendChild(grad); svg.appendChild(defs);
+
+      const area = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      const last = points[points.length - 1];
+      const areaD = `${pathData} L ${last.x} ${height - padding} L ${padding} ${height - padding} Z`;
+      area.setAttribute('d', areaD); area.setAttribute('fill', `url(#${gradId})`); svg.appendChild(area);
+
+      const line = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      line.setAttribute('d', pathData); line.setAttribute('fill', 'none'); line.setAttribute('stroke', color); line.setAttribute('stroke-width', '2'); line.setAttribute('stroke-linecap', 'round'); line.setAttribute('stroke-linejoin', 'round'); svg.appendChild(line);
+
+      points.forEach(p => { const c = document.createElementNS("http://www.w3.org/2000/svg", "circle"); c.setAttribute('cx', p.x); c.setAttribute('cy', p.y); c.setAttribute('r', 4); c.setAttribute('fill', color); c.setAttribute('stroke', '#0b0b0c'); c.setAttribute('stroke-width', '2'); svg.appendChild(c); });
+      points.forEach((p, i) => { const t = document.createElementNS("http://www.w3.org/2000/svg", "text"); t.setAttribute('x', p.x); t.setAttribute('y', height - 6); t.setAttribute('text-anchor', 'middle'); t.setAttribute('font-size', '10'); t.setAttribute('fill', '#71717a'); t.textContent = p.month; svg.appendChild(t); });
+
+      return svg;
+    }
+
+    function filterAndSortReports() {
+      const q = state.query.trim().toLowerCase();
+      const filtered = sampleReports
+        .filter(r => (state.position === 'All' ? true : r.position === state.position))
+        .filter(r => (state.level === 'All' ? true : r.level === state.level))
+        .filter(r => r.name.toLowerCase().includes(q) || r.club.toLowerCase().includes(q));
+
+      filtered.sort((a, b) => {
+        if (state.sort === 'recent') return b.exposure - a.exposure;
+        if (state.sort === 'age-asc') return a.age - b.age;
+        if (state.sort === 'age-desc') return b.age - a.age;
+        return 0;
+      });
+
+      return filtered;
+    }
+
+    function renderList() {
+      const filtered = filterAndSortReports();
+      listColumn.innerHTML = '';
+
+      if (filtered.length === 0) {
+        const emptyCard = document.createElement('div');
+        emptyCard.className = 'card p-8 text-center animate-enter delay-400';
+        emptyCard.innerHTML = `
+          <div class="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center mx-auto mb-4">
+            <i data-lucide="search-x" class="w-6 h-6 text-zinc-500" style="stroke-width: 1.5;"></i>
+          </div>
+          <p class="text-zinc-400">No scouting reports match your filters.</p>
+          <p class="text-zinc-500 text-sm mt-1">Try clearing filters or creating a new report.</p>
+        `;
+        listColumn.appendChild(emptyCard);
+      } else {
+        filtered.forEach((r, idx) => {
+          const item = document.createElement('div');
+          const delayClass = ['delay-300','delay-350','delay-400','delay-450'][idx % 4] || 'delay-300';
+          item.className = `bg-zinc-900 rounded-2xl p-5 border border-zinc-800 hover:border-zinc-700 transition-all hover:-translate-y-0.5 animate-enter ${delayClass}`;
+          
+          const avgScore = Math.round((r.technical + r.tactical + r.physical + r.mental) / 4);
+          
+          item.innerHTML = `
+            <div class="flex items-start gap-4">
+              <div class="flex-1">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div>
+                    <h3 class="font-semibold text-lg text-white">${escapeHtml(r.name)} <span class="text-sm text-zinc-500 font-normal">• ${r.age} yrs</span></h3>
+                    <p class="text-xs text-zinc-500 mt-1 flex items-center gap-2">
+                      <span class="inline-flex items-center gap-1">
+                        <i data-lucide="map-pin" class="w-3 h-3" style="stroke-width: 1.5;"></i>
+                        ${escapeHtml(r.position)}
+                      </span>
+                      <span>•</span>
+                      <span>${escapeHtml(r.club)}</span>
+                      <span>•</span>
+                      <span class="text-orange-500/80">${escapeHtml(r.level)}</span>
+                    </p>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="px-2.5 py-1 text-xs font-medium rounded-lg bg-zinc-800 text-zinc-300 border border-zinc-700">
+                      <i data-lucide="eye" class="w-3 h-3 inline mr-1" style="stroke-width: 1.5;"></i>
+                      ${r.exposure} exposures
+                    </span>
+                    <button data-id="${r.id}" class="viewBtn px-3 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-500 text-white text-sm font-medium transition-colors">View</button>
+                    <button data-id="${r.id}" class="downloadBtn px-2.5 py-1.5 rounded-lg hover:bg-zinc-800 bg-transparent border border-zinc-700 text-zinc-400 hover:text-white transition-colors">
+                      <i data-lucide="download" class="w-4 h-4" style="stroke-width: 1.5;"></i>
+                    </button>
+                  </div>
+                </div>
+                <p class="mt-3 text-sm text-zinc-400 line-clamp-2">${escapeHtml(r.lastScoutNotes)}</p>
+                <div class="mt-4 grid grid-cols-4 gap-3 text-center">
+                  <div class="p-2.5 bg-zinc-950 rounded-lg border border-zinc-800/50">
+                    <div class="text-xs text-zinc-500">Technical</div>
+                    <div class="font-semibold text-white mt-0.5">${r.technical}</div>
+                  </div>
+                  <div class="p-2.5 bg-zinc-950 rounded-lg border border-zinc-800/50">
+                    <div class="text-xs text-zinc-500">Tactical</div>
+                    <div class="font-semibold text-white mt-0.5">${r.tactical}</div>
+                  </div>
+                  <div class="p-2.5 bg-zinc-950 rounded-lg border border-zinc-800/50">
+                    <div class="text-xs text-zinc-500">Physical</div>
+                    <div class="font-semibold text-white mt-0.5">${r.physical}</div>
+                  </div>
+                  <div class="p-2.5 bg-zinc-950 rounded-lg border border-zinc-800/50">
+                    <div class="text-xs text-zinc-500">Mental</div>
+                    <div class="font-semibold text-white mt-0.5">${r.mental}</div>
+                  </div>
+                </div>
+              </div>
+            </div>`;
+          listColumn.appendChild(item);
+        });
+
+        listColumn.querySelectorAll('.viewBtn').forEach(b => b.addEventListener('click', () => { const id = b.dataset.id; const report = sampleReports.find(r => r.id === id); if (report) openModal(report); }));
+        listColumn.querySelectorAll('.downloadBtn').forEach(b => b.addEventListener('click', () => { const id = b.dataset.id; const report = sampleReports.find(r => r.id === id); if (report) handleDownloadPDF(report); }));
+      }
+
+      playersCountEl.textContent = sampleReports.length;
+      shownCountEl.textContent = filterAndSortReports().length;
+      topExposureEl.textContent = Math.max(...sampleReports.map(s => s.exposure));
+    }
+
+    function renderMiniChart() {
+      miniChartWrap.innerHTML = '';
+      if (sampleReports.length > 0) {
+        const svg = createLineSVG(sampleReports[0].progress, '#f97316', 340, 140);
+        miniChartWrap.appendChild(svg);
+      }
+    }
+
+    function render() { 
+      renderList(); 
+      renderMiniChart(); 
+      if (window.lucide) try { lucide.createIcons(); } catch(e){} 
+    }
+
+    function openModal(report) {
+      state.selected = report;
+      modalName.textContent = report.name;
+      modalSubtitle.textContent = `${report.club} • ${report.level} • Age ${report.age}`;
+      modalNotes.textContent = report.lastScoutNotes;
+      modalTechnical.textContent = report.technical;
+      modalTactical.textContent = report.tactical;
+      modalPhysical.textContent = report.physical;
+      modalMental.textContent = report.mental;
+
+      modalRecruitList.innerHTML = '';
+      const recs = [
+        'Recommended: Invite to trial (3-day immersion)',
+        'Weaknesses to address: Left foot finishing, 1v1 defending',
+        'Suggested training plan: 8-week technical finishing + speed program'
+      ];
+      recs.forEach(i => { const li = document.createElement('li'); li.textContent = i; modalRecruitList.appendChild(li); });
+
+      modalChartWrap.innerHTML = '';
+      const svg = createLineSVG(report.progress, '#22c55e', 380, 160);
+      modalChartWrap.appendChild(svg);
+
+      modal.classList.remove('hidden'); 
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      if (window.lucide) try { lucide.createIcons(); } catch(e){}
+    }
+
+    function closeModal() { 
+      state.selected = null; 
+      modal.classList.add('hidden'); 
+      modal.style.display = 'none'; 
+      document.body.style.overflow = '';
+    }
+    
+    modalClose.addEventListener('click', closeModal);
+    modalDownload.addEventListener('click', () => { if (state.selected) handleDownloadPDF(state.selected); });
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+    function exportCSV() {
+      const filtered = filterAndSortReports();
+      const header = ["id","name","age","position","level","club","technical","tactical","physical","mental","exposure"];
+      const rows = filtered.map(r => [r.id, r.name, r.age, r.position, r.level, r.club, r.technical, r.tactical, r.physical, r.mental, r.exposure].map(v => `"${String(v).replace(/"/g,'""')}"`).join(','));
+      const csv = [header.join(','), ...rows].join('\n');
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob); 
+      const a = document.createElement('a'); 
+      a.href = url; 
+      a.download = 'scouting-reports-export.csv'; 
+      a.click(); 
+      URL.revokeObjectURL(url);
+    }
+
+    function handleDownloadPDF(report) { 
+      alert(`Download PDF for ${report.name} (ID: ${report.id}) — implement backend export.`); 
+    }
+    
+    exportCsvBtn.addEventListener('click', exportCSV);
+    searchInput.addEventListener('input', (e) => { state.query = e.target.value; render(); });
+    document.getElementById('shareScoutsBtn').addEventListener('click', () => alert('Open scout outreach modal (implement).'));
+    document.getElementById('requestScoutBtn').addEventListener('click', () => alert('Open request evaluation modal (implement).'));
+    document.getElementById('uploadFootageBtn').addEventListener('click', () => alert('Open upload modal (implement).'));
+
+    function escapeHtml(str) { 
+      if (!str && str !== 0) return ''; 
+      return String(str).replace(/[&<>"']/g, function (s) { 
+        return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[s]; 
+      }); 
+    }
+
+    window.addEventListener('load', () => { 
+      if (window.lucide) try { lucide.createIcons(); } catch(e){}; 
+      render(); 
+    });
+
+    // Mobile Menu Toggle
+    document.addEventListener("DOMContentLoaded", () => {
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+      function openMobileMenu() {
+        if (mobileMenu) {
+          mobileMenu.classList.remove('translate-x-full');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      function closeMobileMenu() {
+        if (mobileMenu) {
+          mobileMenu.classList.add('translate-x-full');
+          document.body.style.overflow = '';
+        }
+      }
+
+      if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', openMobileMenu);
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+        
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+          link.addEventListener('click', closeMobileMenu);
+        });
+
+        mobileMenu.addEventListener('click', (e) => {
+          if (e.target === mobileMenu) {
+            closeMobileMenu();
+          }
+        });
+      }
+    });
+  </script>
+
+</body></html>
