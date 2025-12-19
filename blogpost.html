@@ -1,0 +1,349 @@
+<html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B.E.S.T. Academy - The Mental Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #09090b; }
+        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 4px; }
+        /* Hide default select arrow */
+        select { -webkit-appearance: none; -moz-appearance: none; appearance: none; }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        .animate-fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+        .animate-fade-in { animation: fadeIn 1.5s ease-out forwards; opacity: 0; }
+
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-500 { animation-delay: 500ms; }
+
+        /* Scroll Reveal State */
+        .scroll-hidden { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .scroll-visible { opacity: 1; transform: translateY(0); }
+    </style>
+<link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist">.font-geist { font-family: 'Geist', sans-serif !important; }</style><link id="all-fonts-link-font-roboto" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-roboto">.font-roboto { font-family: 'Roboto', sans-serif !important; }</style><link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-montserrat">.font-montserrat { font-family: 'Montserrat', sans-serif !important; }</style><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-poppins">.font-poppins { font-family: 'Poppins', sans-serif !important; }</style><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><style id="all-fonts-style-font-playfair">.font-playfair { font-family: 'Playfair Display', serif !important; }</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }</style><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><style id="all-fonts-style-font-merriweather">.font-merriweather { font-family: 'Merriweather', serif !important; }</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }</style><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-jakarta">.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">.font-manrope { font-family: 'Manrope', sans-serif !important; }</style><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-space-grotesk">.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }</style><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-work-sans">.font-work-sans { font-family: 'Work Sans', sans-serif !important; }</style><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-pt-serif">.font-pt-serif { font-family: 'PT Serif', serif !important; }</style><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist-mono">.font-geist-mono { font-family: 'Geist Mono', monospace !important; }</style><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-space-mono">.font-space-mono { font-family: 'Space Mono', monospace !important; }</style><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-quicksand">.font-quicksand { font-family: 'Quicksand', sans-serif !important; }</style><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-nunito">.font-nunito { font-family: 'Nunito', sans-serif !important; }</style><link id="all-fonts-link-font-newsreader" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..800&amp;display=swap"><style id="all-fonts-style-font-newsreader">.font-newsreader { font-family: 'Newsreader', serif !important; }</style><link id="all-fonts-link-font-google-sans-flex" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-google-sans-flex">.font-google-sans-flex { font-family: 'Google Sans Flex', sans-serif !important; }</style><link id="all-fonts-link-font-oswald" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-oswald">.font-oswald { font-family: 'Oswald', sans-serif !important; }</style><link id="all-fonts-link-font-dm-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-dm-sans">.font-dm-sans { font-family: 'DM Sans', sans-serif !important; }</style></head>
+<body class="bg-[#050505] text-zinc-400 antialiased min-h-screen flex flex-col selection:bg-orange-500/20 selection:text-orange-200">
+
+<!-- The navbar uses 'sticky' or 'fixed' positioning so it stays visible at the top of the page while scrolling. -->
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 backdrop-blur-sm animate-fade-in">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-12">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center text-white shadow-lg shadow-orange-500/20 group-hover:shadow-orange-500/40 group-hover:scale-110 transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="trophy" strokewidth="1.5" class="lucide lucide-trophy w-4 h-4 text-current" style="stroke-width: 1.5;"><path d="M10 14.66v1.626a2 2 0 0 1-.976 1.696A5 5 0 0 0 7 21.978"></path><path d="M14 14.66v1.626a2 2 0 0 0 .976 1.696A5 5 0 0 1 17 21.978"></path><path d="M18 9h1.5a1 1 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z"></path><path d="M6 9H4.5a1 1 0 0 1 0-5H6"></path></svg>
+                    </div>
+                    <span class="text-lg font-medium tracking-tight text-white group-hover:text-white transition-colors">B.E.S.T. <span class="text-zinc-500 font-light group-hover:text-zinc-400 transition-colors">Academy</span></span>
+                </a>
+
+                <!-- Nav Links -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="index.html" class="text-sm font-normal text-white border-b border-white pb-0.5">Home</a>
+                    <a href="programs.html" class="text-sm font-normal text-zinc-400 hover:text-white transition-colors relative group/link">
+                        Programs
+                        <span class="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover/link:w-full"></span>
+                    </a>
+                    <a href="players.html" class="text-sm font-normal text-zinc-400 hover:text-white transition-colors relative group/link">
+                        Players
+                        <span class="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover/link:w-full"></span>
+                    </a>
+                    <a href="scouting.html" class="text-sm font-normal text-zinc-400 hover:text-white transition-colors relative group/link">
+                        Scouting
+                        <span class="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover/link:w-full"></span>
+                    </a>
+                     <a href="blog.html" class="text-sm font-normal text-zinc-400 hover:text-white transition-colors relative group/link">Blog
+                        <span class="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover/link:w-full"></span>
+                    </a>
+                    <a href="about.html" class="text-sm font-normal text-zinc-400 hover:text-white transition-colors relative group/link">
+                        About
+                        <span class="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover/link:w-full"></span>
+                    </a>
+                    
+                </div>
+            </div>
+
+            <!-- Right Actions -->
+            <div class="flex items-center gap-6">
+                <span class="text-zinc-700 text-xs hidden md:block">|</span>
+                <div class="hidden md:block text-xs text-zinc-500 font-mono">EST. 2025</div>
+                <button id="mobileMenuBtn" class="md:hidden text-zinc-400 hover:text-white transition-colors p-2" aria-label="Toggle mobile menu">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="menu" strokewidth="1.5" class="lucide lucide-menu w-6 h-6 text-current" id="menuIcon" style="stroke-width: 1.5;"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 z-50 bg-zinc-950/95 backdrop-blur-lg md:hidden transform translate-x-full transition-transform duration-300 ease-in-out">
+      <div class="flex flex-col h-full">
+        <div class="flex items-center justify-between p-6 border-b border-white/5">
+          <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center text-white shadow-lg shadow-orange-500/20 group-hover:shadow-orange-500/40 group-hover:scale-110 transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="trophy" strokewidth="1.5" class="lucide lucide-trophy w-4 h-4 text-current" style="stroke-width: 1.5;"><path d="M10 14.66v1.626a2 2 0 0 1-.976 1.696A5 5 0 0 0 7 21.978"></path><path d="M14 14.66v1.626a2 2 0 0 0 .976 1.696A5 5 0 0 1 17 21.978"></path><path d="M18 9h1.5a1 1 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z"></path><path d="M6 9H4.5a1 1 0 0 1 0-5H6"></path></svg>
+                    </div>
+                    <span class="text-lg font-medium tracking-tight text-white group-hover:text-white transition-colors">B.E.S.T. <span class="text-zinc-500 font-light group-hover:text-zinc-400 transition-colors">Academy</span></span>
+                </a>
+          <button id="mobileMenuClose" class="text-zinc-400 hover:text-white transition-colors p-2" aria-label="Close mobile menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" strokewidth="1.5" class="lucide lucide-x w-6 h-6 text-current" style="stroke-width: 1.5;"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+          </button>
+        </div>
+        <nav class="flex-1 overflow-y-auto px-6 py-8">
+          <div class="flex flex-col gap-1">
+            <a href="index.html" class="text-base font-medium text-white border-l-2 border-orange-500 pl-4 py-3">Home</a>
+            <a href="programs.html" class="text-base font-medium text-zinc-400 hover:text-white hover:border-l-2 hover:border-orange-500/50 pl-4 py-3 transition-colors">Programs</a>
+            <a href="players.html" class="text-base font-medium text-zinc-400 hover:text-white hover:border-l-2 hover:border-orange-500/50 pl-4 py-3 transition-colors">Players</a>
+            <a href="scouting.html" class="text-base font-medium text-zinc-400 hover:text-white hover:border-l-2 hover:border-orange-500/50 pl-4 py-3 transition-colors">Scouting</a>
+            <a href="blog.html" class="text-base font-medium text-zinc-400 hover:text-white hover:border-l-2 hover:border-orange-500/50 pl-4 py-3 transition-colors">Blog</a>
+            <a href="about.html" class="text-base font-medium text-zinc-400 hover:text-white hover:border-l-2 hover:border-orange-500/50 pl-4 py-3 transition-colors">About</a>
+          </div>
+          <div class="mt-8 pt-8 border-t border-white/5">
+            <div class="text-xs text-zinc-500 font-mono">EST. 2025</div>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+
+    <!-- Main Content -->
+    <main class="flex-grow md:px-6 pt-32 pr-4 pb-24 pl-4">
+        
+        <!-- Article Header -->
+        <article class="max-w-2xl mx-auto">
+            
+            <!-- Badge & Title -->
+            <div class="text-center mb-10 space-y-6 animate-fade-in-up delay-100">
+                <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-orange-500/20 bg-orange-500/10 text-orange-400 shadow-[0_0_20px_-10px_rgba(249,115,22,0.5)]">
+                    <span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse"></span>
+                    <span class="text-[10px] font-bold tracking-wide uppercase">Mental Performance</span>
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold text-white tracking-tighter leading-[1.1]">
+                    The Psychology of <br class="hidden md:block"> Consistency
+                </h1>
+
+                <!-- Meta Data -->
+                <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-medium text-zinc-500 pt-2 animate-fade-in-up delay-200">
+                    <div class="flex items-center gap-2 hover:text-zinc-300 transition-colors cursor-default">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&amp;w=100&amp;auto=format&amp;fit=crop" alt="Coach" class="w-5 h-5 rounded-full grayscale opacity-70">
+                        <span>Coach Mike</span>
+                    </div>
+                    <span class="text-zinc-700">•</span>
+                    
+                    <span class="text-zinc-700">•</span>
+                    <span>5 min read</span>
+                </div>
+            </div>
+
+            <!-- Hero Image -->
+            <div class="relative w-full aspect-[2/1] rounded-xl overflow-hidden mb-16 border border-white/10 bg-zinc-900 group animate-fade-in-up delay-300">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60 z-10"></div>
+                <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&amp;w=2586&amp;auto=format&amp;fit=crop" alt="Athlete focus" class="w-full h-full object-cover grayscale-[20%] group-hover:scale-105 transition-transform duration-700 ease-out">
+            </div>
+
+            <!-- Content Body -->
+            <div class="prose prose-invert prose-zinc max-w-none scroll-hidden">
+                <p class="text-lg md:text-xl text-zinc-300 font-normal leading-relaxed mb-12">
+                    Most players obsess over physical drills, but the separation between good and elite often happens in the mind. The ability to perform when the conditions aren't perfect is what we define as the <span class="text-white">Professional Mindset</span>.
+                </p>
+
+                <div class="flex items-center gap-4 py-8">
+                    <div class="h-px flex-1 bg-zinc-800"></div>
+                    <span class="text-xs font-mono text-zinc-600 uppercase tracking-widest">The Framework</span>
+                    <div class="h-px flex-1 bg-zinc-800"></div>
+                </div>
+
+                <div class="space-y-4 my-10">
+                    <!-- Point 1 -->
+                    <div class="group p-5 rounded-xl bg-zinc-900/30 border border-white/5 hover:border-white/10 hover:bg-zinc-900/50 transition-all duration-300">
+                        <div class="flex gap-4 items-baseline">
+                            <span class="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded bg-orange-500/10 text-orange-500 text-xs font-mono font-semibold">01</span>
+                            <div class="">
+                                <h3 class="text-zinc-100 font-medium text-base mb-1 tracking-tight">Ruthless Routine</h3>
+                                <p class="text-sm text-zinc-400 leading-relaxed">Elite athletes have boring routines. They don't rely on sudden bursts of motivation; they rely on discipline built through repetitive, predictable preparation.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Point 2 -->
+                    <div class="group p-5 rounded-xl bg-zinc-900/30 border border-white/5 hover:border-white/10 hover:bg-zinc-900/50 transition-all duration-300">
+                        <div class="flex gap-4 items-baseline">
+                            <span class="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded bg-zinc-800 text-zinc-400 text-xs font-mono group-hover:bg-zinc-700 transition-colors">02</span>
+                            <div class="">
+                                <h3 class="text-zinc-100 font-medium text-base mb-1 tracking-tight">Micro Resilience</h3>
+                                <p class="text-sm text-zinc-400 leading-relaxed">Bouncing back from mistakes immediately. The "next play" mentality prevents a single error from spiraling into a bad performance.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Point 3 -->
+                    <div class="group p-5 rounded-xl bg-zinc-900/30 border border-white/5 hover:border-white/10 hover:bg-zinc-900/50 transition-all duration-300">
+                        <div class="flex gap-4 items-baseline">
+                            <span class="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded bg-zinc-800 text-zinc-400 text-xs font-mono group-hover:bg-zinc-700 transition-colors">03</span>
+                            <div class="">
+                                <h3 class="text-zinc-100 font-medium text-base mb-1 tracking-tight">Ego-less Reflection</h3>
+                                <p class="text-sm text-zinc-400 leading-relaxed">Reviewing game tape objectively. Removing emotion allows for faster data processing and adaptation for the next match.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-base text-zinc-400 leading-relaxed">
+                    Building these habits takes longer than learning a new dribble move, but the compounding returns over a season are immeasurable. Start with one, master it, then move to the next.
+                </p>
+            </div>
+
+            <!-- Tags & Share -->
+            <div class="mt-16 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-6 scroll-hidden">
+                <div class="flex gap-2">
+                    <span class="px-2.5 py-1 rounded-md bg-zinc-900 border border-zinc-800 text-[10px] font-medium text-zinc-400 uppercase tracking-wide">Psychology</span>
+                    <span class="px-2.5 py-1 rounded-md bg-zinc-900 border border-zinc-800 text-[10px] font-medium text-zinc-400 uppercase tracking-wide">Training</span>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <span class="text-xs text-zinc-600 font-medium uppercase tracking-wider">Share</span>
+                    <button class="text-zinc-400 hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="twitter" strokewidth="1.5" class="lucide lucide-twitter w-4 h-4 text-current"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></button>
+                    <button class="text-zinc-400 hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="linkedin" strokewidth="1.5" class="lucide lucide-linkedin w-4 h-4 text-current"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></button>
+                    <button class="text-zinc-400 hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="link" strokewidth="1.5" class="lucide lucide-link w-4 h-4 text-current"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></button>
+                </div>
+            </div>
+
+        </article>
+
+        <!-- Related Post (Subtle) -->
+        <div class="max-w-2xl mx-auto mt-20 p-6 rounded-2xl bg-gradient-to-br from-zinc-900/40 to-black border border-white/5 scroll-hidden">
+            <h4 class="text-xs font-semibold text-zinc-500 uppercase tracking-widest mb-4">Up Next</h4>
+            <a href="#" class="group block">
+                <h3 class="text-xl font-medium text-zinc-200 group-hover:text-orange-500 transition-colors mb-2">Technical Mastery: The First 15 Minutes</h3>
+                <p class="text-sm text-zinc-500 line-clamp-2">Why the warm-up is the most important part of your technical development session and how to optimize it.</p>
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 bg-[#020202] pt-16 pb-8">
+         <div class="flex flex-col max-w-7xl mr-auto ml-auto items-center">
+            <h2 class="md:text-3xl text-2xl font-semibold text-white tracking-tight text-center mb-8 hover:tracking-wide transition-all duration-300">Batavia's Elite Soccer Training</h2>
+            <div class="flex gap-8 mb-10 gap-x-8 gap-y-8 items-center">
+                <a href="#" class="text-white hover:text-orange-500 transition-colors transform hover:scale-110 duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook stroke-[1.5] w-[24px] h-[24px]" style="width: 24px; height: 24px;"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                <a href="#" class="text-white hover:text-orange-500 transition-colors transform hover:scale-110 duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram w-6 h-6 stroke-[1.5]"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+                </a>
+                <a href="#" class="text-white hover:text-orange-500 transition-colors transform hover:scale-110 duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter w-6 h-6 stroke-[1.5]"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+                </a>
+                <a href="https://www.youtube.com/watch?v=dEk3LUPAg7s" class="text-white hover:text-orange-500 transition-colors transform hover:scale-110 duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube w-6 h-6 stroke-[1.5]"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path><path d="m10 15 5-3-5-3z"></path></svg>
+                </a>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8 md:gap-12 mb-12">
+                <a href="index.html" class="hover:text-white transition-colors text-base font-medium text-zinc-200 hover:underline hover:underline-offset-4">Home</a>
+                <a href="programs.html" class="text-base font-medium text-zinc-200 hover:text-white transition-colors hover:underline hover:underline-offset-4">Programs</a>
+                <a href="players.html" class="text-base font-medium text-zinc-200 hover:text-white transition-colors hover:underline hover:underline-offset-4">Players</a>
+                <a href="scouting.html" class="text-base font-medium text-zinc-200 hover:text-white transition-colors hover:underline hover:underline-offset-4">Scouting</a>
+                <a href="blog.html" class="text-base font-medium text-zinc-200 hover:text-white transition-colors hover:underline hover:underline-offset-4">Blog</a>
+                <a href="contact.html" class="text-base font-medium text-zinc-200 hover:text-white transition-colors hover:underline hover:underline-offset-4">Contact</a>
+            </div>
+        </div>
+
+            <!-- Bottom -->
+            <div class="flex flex-col md:flex-row gap-4 border-[#020202] border-t pt-8 gap-x-4 gap-y-4 items-center justify-between">
+                <p class="text-[10px] text-zinc-600 px-4">© 2025 Batavia Elite Soccer Training.</p>
+                <div class="flex px-4 gap-x-2 gap-y-2 items-center">
+                    <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
+                    <span class="text-[10px] font-medium text-zinc-500">Systems Operational</span>
+                </div>
+            </div>
+        
+    </footer>
+
+    <script>
+        lucide.createIcons({
+            attrs: {
+                strokeWidth: 1.5,
+                class: "text-current"
+            }
+        });
+
+        // Intersection Observer for scroll animations and mobile menu toggles
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('scroll-visible');
+                        entry.target.classList.remove('scroll-hidden');
+                        observer.unobserve(entry.target); // Only animate once
+                    }
+                });
+            }, observerOptions);
+
+            const scrollElements = document.querySelectorAll('.scroll-hidden');
+            scrollElements.forEach(el => observer.observe(el));
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+            function openMobileMenu() {
+                if (mobileMenu) {
+                    mobileMenu.classList.remove('translate-x-full');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+
+            function closeMobileMenu() {
+                if (mobileMenu) {
+                    mobileMenu.classList.add('translate-x-full');
+                    document.body.style.overflow = '';
+                }
+            }
+
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', openMobileMenu);
+            }
+
+            if (mobileMenuClose) {
+                mobileMenuClose.addEventListener('click', closeMobileMenu);
+            }
+
+            if (mobileMenu) {
+                mobileMenu.addEventListener('click', (e) => {
+                    if (e.target === mobileMenu) {
+                        closeMobileMenu();
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
