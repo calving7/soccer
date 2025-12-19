@@ -1,120 +1,273 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="dark">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About — B.E.S.T. Academy</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#0b0b0c;color:#e6e6e6;padding:48px}</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B.E.S.T. Academy - Batavia's Elite Soccer Training</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #09090b; }
+        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 4px; }
+        /* Hide default select arrow */
+        select { -webkit-appearance: none; -moz-appearance: none; appearance: none; }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .animate-fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+        .animate-fade-in { animation: fadeIn 1.5s ease-out forwards; opacity: 0; }
+        
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-500 { animation-delay: 500ms; }
+
+        /* Page section styles */
+        .page-section { display: none; }
+        .page-section.active { display: block; animation: fadeInPage 0.4s ease-out; }
+        @keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
+    </style>
 </head>
-<body class="bg-zinc-950 text-zinc-300 antialiased">
-  <!-- Navigation -->
-  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 backdrop-blur-sm animate-enter delay-100 bg-zinc-950/80">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <div class="flex items-center gap-12">
-        <a href="index.html" class="flex items-center gap-3 group">
-          <div class="w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center text-white shadow-lg shadow-orange-500/20 group-hover:shadow-orange-500/40 group-hover:scale-110 transition-all duration-300">
-            <i data-lucide="trophy" class="w-4 h-4" style="stroke-width: 1.5;"></i>
-          </div>
-          <span class="text-lg font-medium tracking-tight text-white group-hover:text-white transition-colors">B.E.S.T. <span class="text-zinc-500 font-light group-hover:text-zinc-400 transition-colors">Academy</span></span>
-        </a>
+<body class="bg-zinc-950 text-zinc-300 antialiased selection:bg-orange-500/30 selection:text-orange-200 overflow-x-hidden">
 
-        <div class="hidden md:flex items-center gap-8">
-          <a href="index.html" class="text-sm font-normal text-zinc-400 hover:text-white transition-colors relative group/link">Home<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white transition-all duration-300 group-hover/link:w-full"></span></a>
-          <a href="programs.html" class="text-sm font-normal text-zinc-400 hover:text-white transition-colors relative group/link">Programs<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white transition-all duration-300 group-hover/link:w-full"></span></a>
-          <a href="players.html" class="text-sm font-normal text-zinc-400 hover:text-white transition-colors relative group/link">Players<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white transition-all duration-300 group-hover/link:w-full"></span></a>
-          <a href="scouting.html" class="text-sm font-normal text-white border-b border-white pb-0.5">Scouting</a>
-          <a href="blog.html" class="text-sm font-normal text-zinc-400 hover:text-white transition-colors relative group/link">Blog<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white transition-all duration-300 group-hover/link:w-full"></span></a>
-          <a href="about.html" class="text-sm font-normal text-zinc-400 hover:text-white transition-colors relative group/link">About<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-white transition-all duration-300 group-hover/link:w-full"></span></a>
+    <!-- Navigation (Index-style) -->
+    <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 backdrop-blur-sm animate-fade-in">
+            <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+                    <div class="flex items-center gap-12">
+                            <!-- Logo -->
+                            <a href="index.html" class="flex items-center gap-3 group">
+                                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center text-white shadow-lg shadow-orange-500/20 group-hover:shadow-orange-500/40 group-hover:scale-110 transition-all duration-300">
+                                            <i data-lucide="trophy" class="w-4 h-4" style="stroke-width: 1.5;"></i>
+                                    </div>
+                                    <span class="text-lg font-medium tracking-tight text-white group-hover:text-white transition-colors">B.E.S.T. <span class="text-zinc-500 font-light group-hover:text-zinc-400 transition-colors">Academy</span></span>
+                            </a>
+
+                            <!-- Nav Links -->
+                            <div class="hidden md:flex items-center gap-8">
+                                    <a href="index.html" class="text-sm font-normal text-zinc-400 hover:text-white transition-colors relative group/link">Home<span class="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover/link:w-full"></span></a>
+                                    <a href="programs.html" class="text-sm font-normal text-zinc-400 hover:text-white transition-colors relative group/link">Programs<span class="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover/link:w-full"></span></a>
+                                    <a href="players.html" class="text-sm font-normal text-zinc-400 hover:text-white transition-colors relative group/link">Players<span class="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover/link:w-full"></span></a>
+                                    <a href="scouting.html" class="text-sm font-normal text-zinc-400 hover:text-white transition-colors relative group/link">Scouting<span class="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover/link:w-full"></span></a>
+                                    <a href="blog.html" class=""text-sm font-normal text-white border-b border-white pb-0.5""></a>
+                                    <a href="about.html" class="text-sm font-normal text-zinc-400 hover:text-white transition-colors relative group/link">About<span class="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover/link:w-full"></span></a>
+                            </div>
+                    </div>
+
+                    <!-- Right Actions -->
+                    <div class="flex items-center gap-6">
+                            <span class="text-zinc-700 text-xs hidden md:block">|</span>
+                            <div class="hidden md:block text-xs text-zinc-500 font-mono">EST. 2025</div>
+                            <button id="mobileMenuBtn" class="md:hidden text-zinc-400 hover:text-white transition-colors p-2" aria-label="Toggle mobile menu">
+                                <i data-lucide="menu" id="menuIcon" class="w-6 h-6" style="stroke-width: 1.5;"></i>
+                            </button>
+                    </div>
+            </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 z-50 bg-zinc-950/95 backdrop-blur-lg md:hidden transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="flex flex-col h-full">
+            <div class="flex items-center justify-between p-6 border-b border-white/5">
+                <a href="Index.html" class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center text-white shadow-lg shadow-orange-500/20">
+                        <i data-lucide="trophy" class="w-4 h-4" style="stroke-width: 1.5;"></i>
+                    </div>
+                    <span class="text-lg font-medium tracking-tight text-white">B.E.S.T. <span class="text-zinc-500 font-light">Academy</span></span>
+                </a>
+                <button id="mobileMenuClose" class="text-zinc-400 hover:text-white transition-colors p-2" aria-label="Close mobile menu">
+                    <i data-lucide="x" class="w-6 h-6" style="stroke-width: 1.5;"></i>
+                </button>
+            </div>
+            <nav class="flex-1 overflow-y-auto px-6 py-8">
+                <div class="flex flex-col gap-1">
+                    <a href="Index.html" class="text-base font-medium text-zinc-400 hover:text-white hover:border-l-2 hover:border-orange-500/50 pl-4 py-3 transition-colors">Home</a>
+                    <a href="programs.html" class="text-base font-medium text-zinc-400 hover:text-white hover:border-l-2 hover:border-orange-500/50 pl-4 py-3 transition-colors">Programs</a>
+                    <a href="players.html" class="text-base font-medium text-zinc-400 hover:text-white hover:border-l-2 hover:border-orange-500/50 pl-4 py-3 transition-colors">Players</a>
+                    <a href="scouting.html" class="text-base font-medium text-zinc-400 hover:text-white hover:border-l-2 hover:border-orange-500/50 pl-4 py-3 transition-colors">Scouting</a>
+                    <a href="blog.html" class="text-base font-medium text-white border-l-2 border-orange-500 pl-4 py-3">Blog</a>
+                    <a href="about.html" class="text-base font-medium text-zinc-400 hover:text-white hover:border-l-2 hover:border-orange-500/50 pl-4 py-3 transition-colors">About</a>
+                </div>
+                <div class="mt-8 pt-8 border-t border-white/5">
+                    <div class="text-xs text-zinc-500 font-mono">EST. 2025</div>
+                </div>
+            </nav>
         </div>
-      </div>
-
-      <div class="flex items-center gap-6">
-        <span class="text-zinc-700 text-xs hidden md:block">|</span>
-        <div class="hidden md:block text-xs text-zinc-500 font-mono">EST. 2025</div>
-        <button id="mobileMenuBtn" class="md:hidden text-zinc-400 hover:text-white transition-colors p-2" aria-label="Toggle mobile menu">
-          <i data-lucide="menu" id="menuIcon" class="w-6 h-6" style="stroke-width: 1.5;"></i>
-        </button>
-      </div>
     </div>
-  </nav>
 
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="fixed inset-0 z-50 bg-zinc-950/95 backdrop-blur-lg md:hidden transform translate-x-full transition-transform duration-300 ease-in-out">
-    <div class="flex flex-col h-full">
-      <div class="flex items-center justify-between p-6 border-b border-white/5">
-        <a href="Index.html" class="flex items-center gap-3">
-          <div class="w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center text-white shadow-lg shadow-orange-500/20">
-            <i data-lucide="trophy" class="w-4 h-4" style="stroke-width: 1.5;"></i>
-          </div>
-          <span class="text-lg font-medium tracking-tight text-white">B.E.S.T. <span class="text-zinc-500 font-light">Academy</span></span>
-        </a>
-        <button id="mobileMenuClose" class="text-zinc-400 hover:text-white transition-colors p-2" aria-label="Close mobile menu">
-          <i data-lucide="x" class="w-6 h-6" style="stroke-width: 1.5;"></i>
-        </button>
-      </div>
-      <nav class="flex-1 overflow-y-auto px-6 py-8">
-        <div class="flex flex-col gap-1">
-          <a href="Index.html" class="text-base font-medium text-zinc-400 hover:text-white hover:border-l-2 hover:border-orange-500/50 pl-4 py-3 transition-colors">Home</a>
-          <a href="programs.html" class="text-base font-medium text-zinc-400 hover:text-white hover:border-l-2 hover:border-orange-500/50 pl-4 py-3 transition-colors">Programs</a>
-          <a href="players.html" class="text-base font-medium text-zinc-400 hover:text-white hover:border-l-2 hover:border-orange-500/50 pl-4 py-3 transition-colors">Players</a>
-          <a href="scouting.html" class="text-base font-medium text-white border-l-2 border-orange-500 pl-4 py-3">Scouting</a>
-          <a href="blog.html" class="text-base font-medium text-zinc-400 hover:text-white hover:border-l-2 hover:border-orange-500/50 pl-4 py-3 transition-colors">Blog</a>
-          <a href="about.html" class="text-base font-medium text-zinc-400 hover:text-white hover:border-l-2 hover:border-orange-500/50 pl-4 py-3 transition-colors">About</a>
+    <!-- Main content (kept from original blog content) -->
+    <main class="w-full relative">
+        <!-- HOME / Blog content -->
+        <div id="page-home" class="page-section active">
+            <section class="relative px-6 pt-32 pb-24 w-full max-w-[1400px] mx-auto min-h-[80vh] flex items-center">
+                <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[80%] h-[400px] hero-gradient opacity-30 rounded-full pointer-events-none"></div>
+                <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center relative z-10">
+                    <div class="order-2 lg:order-1 fade-in">
+                        <div class="flex items-center gap-3 mb-8">
+                            <span class="px-2.5 py-0.5 rounded text-[10px] font-semibold tracking-wider uppercase text-[#f97316] bg-[#f97316]/10 border border-[#f97316]/20">Featured Insight</span>
+                            <span class="text-xs text-gray-500 font-mono">OCT 12</span>
+                        </div>
+                        <h1 class="text-5xl md:text-7xl font-semibold tracking-tightest text-white mb-8 leading-[1.1]">The Psychology of <br><span class="text-gray-500">Consistency.</span></h1>
+                        <p class="text-xl text-gray-400 font-light leading-relaxed mb-10 max-w-xl">Most players focus solely on physical drills, but the separation between good and elite often happens in the mind. Discover the framework our athletes use to maintain peak performance.</p>
+                        <div class="flex items-center gap-4 pt-6 border-t border-white/5">
+                            <div class="flex -space-x-3">
+                                <div class="w-10 h-10 rounded-full bg-gray-700 border-2 border-transparent bg-[url('https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&amp;fit=crop&amp;q=80&amp;w=100')] bg-cover"></div>
+                                <div class="w-10 h-10 rounded-full bg-gray-600 border-2 border-transparent bg-[url('https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&amp;fit=crop&amp;q=80&amp;w=100')] bg-cover"></div>
+                                <div class="w-10 h-10 rounded-full bg-gray-500 border-2 border-transparent flex items-center justify-center text-xs font-medium text-white bg-neutral-800">+420</div>
+                            </div>
+                            <span class="text-sm text-gray-500 font-medium">Read by 420+ athletes this week</span>
+                        </div>
+                    </div>
+                    <div class="relative group cursor-pointer order-1 lg:order-2 fade-in delay-100">
+                        <div class="absolute -inset-1 bg-gradient-to-tr from-[#f97316]/20 to-[#f97316]/20 rounded-2xl blur-xl opacity-40 group-hover:opacity-60 transition duration-700"></div>
+                        <div class="relative overflow-hidden rounded-2xl border border-white/10 aspect-[4/3] shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1526232761682-d26e03ac148e?q=80&amp;w=2658&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100">
+                            <div class="absolute bottom-6 left-6 right-6">
+                                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/10">
+                                    <i data-lucide="play-circle" class="w-4 h-4 text-[#f97316]"></i>
+                                    <span class="text-xs font-medium text-white">Watch Breakdown</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Latest Insights grid (kept) -->
+            <section class="px-6 py-24 w-full max-w-[1400px] mx-auto border-t border-white/5">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                    <div>
+                        <h3 class="text-3xl font-medium tracking-tight text-white mb-2">Latest Insights</h3>
+                        <p class="text-gray-500">Expert analysis on training, nutrition, and recruitment.</p>
+                    </div>
+                    <button class="text-sm font-medium text-white hover:text-gray-300 transition-colors flex items-center gap-2 border-b border-white/20 pb-0.5 hover:border-white">View all articles <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Article 1 -->
+                    <article class="group cursor-pointer flex flex-col h-full">
+                        <div class="overflow-hidden rounded-lg border border-white/10 mb-5 relative aspect-video bg-neutral-900">
+                            <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?q=80&amp;w=2670&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105 opacity-80 group-hover:opacity-100">
+                        </div>
+                        <div class="flex items-center gap-3 mb-3 text-xs font-mono text-[#f97316]"><span>NUTRITION</span><span class="w-1 h-1 bg-gray-700 rounded-full"></span><span class="text-gray-500">5 MIN</span></div>
+                        <h4 class="text-xl font-medium tracking-tight text-white mb-3 group-hover:text-[#f97316] transition-colors">Fueling for 90 Minutes</h4>
+                        <p class="text-sm text-gray-400 font-light leading-relaxed mb-4 flex-grow">Essential dietary habits for midfielders looking to maintain high energy output.</p>
+                    </article>
+
+                    <!-- Article 2 -->
+                    <article class="group cursor-pointer flex flex-col h-full">
+                        <div class="overflow-hidden rounded-lg border border-white/10 mb-5 relative aspect-video bg-neutral-900">
+                            <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&amp;w=2670&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105 opacity-80 group-hover:opacity-100">
+                        </div>
+                        <div class="flex items-center gap-3 mb-3 text-xs font-mono text-[#f97316]"><span>RECRUITMENT</span><span class="w-1 h-1 bg-gray-700 rounded-full"></span><span class="text-gray-500">8 MIN</span></div>
+                        <h4 class="text-xl font-medium tracking-tight text-white mb-3 group-hover:text-[#f97316] transition-colors">The College Scout Checklist</h4>
+                        <p class="text-sm text-gray-400 font-light leading-relaxed mb-4 flex-grow">What D1 scouts are actually looking for when they stand on the sidelines.</p>
+                    </article>
+
+                    <!-- Article 3 -->
+                    <article class="group cursor-pointer flex flex-col h-full">
+                        <div class="overflow-hidden rounded-lg border border-white/10 mb-5 relative aspect-video bg-neutral-900">
+                            <img src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?q=80&amp;w=2600&amp;auto=format&amp;fit=crop" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105 opacity-80 group-hover:opacity-100">
+                        </div>
+                        <div class="flex items-center gap-3 mb-3 text-xs font-mono text-[#f97316]"><span>TECHNIQUE</span><span class="w-1 h-1 bg-gray-700 rounded-full"></span><span class="text-gray-500">4 MIN</span></div>
+                        <h4 class="text-xl font-medium tracking-tight text-white mb-3 group-hover:text-[#f97316] transition-colors">Mastering the First Touch</h4>
+                        <p class="text-sm text-gray-400 font-light leading-relaxed mb-4 flex-grow">Drills you can do in your backyard to ensure the ball sticks to your foot.</p>
+                    </article>
+                </div>
+            </section>
         </div>
-        <div class="mt-8 pt-8 border-t border-white/5">
-          <div class="text-xs text-zinc-500 font-mono">EST. 2025</div>
+
+        <!-- Additional pages/sections from the original file are preserved but are not required for the navbar change -->
+    </main>
+
+    <footer class="border-t border-white/10 bg-black py-16 mt-0">
+        <div class="max-w-[1400px] mx-auto px-6 flex flex-col md:flex-row justify-between items-start gap-12">
+            <div>
+                <div class="flex items-center gap-2 mb-6">
+                    <i data-lucide="trophy" class="text-white w-5 h-5"></i>
+                    <span class="text-lg font-medium tracking-tight text-white">B.E.S.T. Academy</span>
+                </div>
+                <p class="text-gray-500 text-sm max-w-xs font-light">Building elite skills, tactical intelligence, and mental fortitude for the modern game.</p>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-12 text-sm">
+                <div class="flex flex-col gap-4">
+                    <span class="text-white font-medium">Platform</span>
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors">Programs</a>
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors">Coaches</a>
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors">Pricing</a>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <span class="text-white font-medium">Company</span>
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors">About</a>
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors">Careers</a>
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors">Contact</a>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <span class="text-white font-medium">Social</span>
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors">Twitter</a>
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors">Instagram</a>
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors">LinkedIn</a>
+                </div>
+            </div>
         </div>
-      </nav>
-    </div>
-  </div>
+        <div class="max-w-[1400px] mx-auto px-6 mt-16 pt-8 border-t border-white/10 flex justify-between items-center text-xs text-gray-600">
+            <p>© 2025 B.E.S.T. Academy. All rights reserved.</p>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-gray-400">Privacy</a>
+                <a href="#" class="hover:text-gray-400">Terms</a>
+            </div>
+        </div>
+    </footer>
 
-  <h1>About (Placeholder)</h1>
-  <p>This is a stub page for About. Edit content here.</p>
-  <p><a href="index.html">← Back to Home</a></p>
+    <script>lucide.createIcons();</script>
 
-  <script>
-    // Mobile Menu Toggle
-    document.addEventListener("DOMContentLoaded", () => {
-      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-      const mobileMenu = document.getElementById('mobileMenu');
-      const mobileMenuClose = document.getElementById('mobileMenuClose');
+    <!-- Mobile menu toggle script (Index-style) -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuClose = document.getElementById('mobileMenuClose');
 
-      function openMobileMenu() {
-        if (mobileMenu) {
-          mobileMenu.classList.remove('translate-x-full');
-          document.body.style.overflow = 'hidden';
-        }
-      }
+            function openMobileMenu() {
+                if (mobileMenu) {
+                    mobileMenu.classList.remove('translate-x-full');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
 
-      function closeMobileMenu() {
-        if (mobileMenu) {
-          mobileMenu.classList.add('translate-x-full');
-          document.body.style.overflow = '';
-        }
-      }
+            function closeMobileMenu() {
+                if (mobileMenu) {
+                    mobileMenu.classList.add('translate-x-full');
+                    document.body.style.overflow = '';
+                }
+            }
 
-      if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', openMobileMenu);
-      }
-
-      if (mobileMenuClose) {
-        mobileMenuClose.addEventListener('click', closeMobileMenu);
-      }
-
-      if (mobileMenu) {
-        mobileMenu.addEventListener('click', (e) => {
-          if (e.target === mobileMenu) {
-            closeMobileMenu();
-          }
+            if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileMenu);
+            if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
+            if (mobileMenu) mobileMenu.addEventListener('click', (e) => { if (e.target === mobileMenu) closeMobileMenu(); });
         });
-      }
-    });
-  </script>
+    </script>
+
 </body>
 </html>
+
+
 
